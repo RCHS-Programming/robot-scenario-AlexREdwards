@@ -14,6 +14,44 @@ public class Robot extends Actor
      */
     public void act() 
     {
-        // Add your action code here.
+        robotMovement();
+        detectWallCollision();
+        detectBlockCollision();
     }    
+    
+    public void robotMovement()
+    {
+        if(Greenfoot.isKeyDown("up"))
+        {
+            setLocation( getX(), getY() -3);
+        }
+        if(Greenfoot.isKeyDown("down"))
+        {
+            setLocation( getX(), getY() +3);
+        }
+        if(Greenfoot.isKeyDown("left"))
+        {
+            setLocation( getX() -3, getY());
+        }
+        if(Greenfoot.isKeyDown("right"))
+        {
+            setLocation( getX() +3, getY());
+        }
+    }
+    
+    public void detectWallCollision()
+    {
+        if(isTouching(Wall.class))
+        {
+            setLocation( 25, 50);
+        }
+    }
+    
+    public void detectBlockCollision()
+    {
+        if(isTouching(Block.class))
+        {
+            setLocation( 25, 50);
+        }
+    }
 }
